@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PowerMonitor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="PowerMonitor" Height="350" Width="525" Icon="battery.ico" ShowInTaskbar="False">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnStart_Click"/>
+        <Button x:Name="btnStop" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Click="btnStop_Click" IsEnabled="False"/>
+        <Label Content="Power Mode:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top"/>
+        <Label Content="Current Voltage:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="Current Capacity:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMode" Content="Monitoring Disabled" HorizontalAlignment="Left" Margin="143,4,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblVoltage" Content="Monitoring Disabled" HorizontalAlignment="Left" Margin="143,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,3.733"/>
+        <Label x:Name="lblCapacity" Content="Monitoring Disabled" HorizontalAlignment="Left" Margin="143,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Height="119" Width="405" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="24"/>
+
     </Grid>
 </Window>
