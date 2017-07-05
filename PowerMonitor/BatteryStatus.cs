@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 
 namespace PowerMonitor
@@ -15,6 +11,12 @@ namespace PowerMonitor
         private int dataPointCount;
         private BatteryStatusCode currentStatus;
         private double voltageThreshold;
+        private bool charging;
+
+        public bool Charging
+        {
+            get { return charging; }
+        }
 
         public enum BatteryStatusCode
         {
@@ -32,6 +34,7 @@ namespace PowerMonitor
             currentCapacity = 0;
             currentStatus = BatteryStatusCode.OK;
             voltageThreshold = Double.Parse(ConfigurationManager.AppSettings["voltageThreshold"]);
+            charging = true;
         }
 
         public static BatteryStatus Instance
@@ -47,23 +50,39 @@ namespace PowerMonitor
             }
         }
 
-        public void RecordData(double voltage, uint capacity)
+        public void RecordData(double voltage, uint capacity, string charging)
         {
             lastVoltage = currentVoltage;
             currentVoltage = voltage;
             lastCapacity = currentCapacity;
             currentCapacity = capacity;
+            
+            if (charging.Contains("Charging"))
+            {
+                this.charging = true;
+            }
+            else
+            {
+                this.charging = false;
+            }
         }
 
         public BatteryStatusCode QueryStatus()
         {
-            if (currentVoltage < voltageThreshold)
+            if (this.charging)
             {
-                currentStatus = BatteryStatusCode.LowVoltage;
-            }
-            else if (currentCapacity < lastCapacity)
-            {
-                currentStatus = BatteryStatusCode.Discharging;
+                if (currentVoltage < voltageThreshold)
+                {
+                    currentStatus = BatteryStatusCode.LowVoltage;
+                }
+                else if (currentCapacity < lastCapacity)
+                {
+                    currentStatus = BatteryStatusCode.Discharging;
+                }
+                else
+                {
+                    currentStatus = BatteryStatusCode.OK;
+                }
             }
             else
             {

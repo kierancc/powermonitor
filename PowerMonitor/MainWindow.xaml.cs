@@ -87,7 +87,7 @@ namespace PowerMonitor
 
             // Record the data
             double voltage = battInfo.Voltage / 1000.0;
-            BatteryStatus.Instance.RecordData(voltage, battInfo.CurrentCapacity);
+            BatteryStatus.Instance.RecordData(voltage, battInfo.CurrentCapacity, batteryChargeStatus.ToString());
             BatteryStatus.BatteryStatusCode status = BatteryStatus.Instance.QueryStatus();
 
             if (status != BatteryStatus.BatteryStatusCode.OK)
@@ -104,6 +104,7 @@ namespace PowerMonitor
                 window.lblMode.Content = batteryChargeStatus.ToString();
                 window.lblVoltage.Content = String.Format("{0} V", battInfo.Voltage);
                 window.lblCapacity.Content = String.Format("{0} mWh", battInfo.CurrentCapacity);
+                window.lblCharging.Content = BatteryStatus.Instance.Charging;
 
                 switch(status)
                 {

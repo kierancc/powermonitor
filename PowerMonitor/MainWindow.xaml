@@ -19,7 +19,9 @@
         <Label x:Name="lblMode" Content="Monitoring Disabled" HorizontalAlignment="Left" Margin="143,4,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblVoltage" Content="Monitoring Disabled" HorizontalAlignment="Left" Margin="143,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,3.733"/>
         <Label x:Name="lblCapacity" Content="Monitoring Disabled" HorizontalAlignment="Left" Margin="143,56,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Height="119" Width="405" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="24"/>
+        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Height="118" Width="405" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="24"/>
+        <Label Content="Battery Status:" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCharging" Content="Monitoring Disabled" HorizontalAlignment="Left" Margin="143,82,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
